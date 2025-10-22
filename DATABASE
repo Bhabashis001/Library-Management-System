@@ -1,0 +1,201 @@
+-- ===================================================
+-- Library Management System Database
+-- MySQL / MariaDB
+-- 150 Books, 50 Members, 50+ Issued Books
+-- ===================================================
+
+-- Create Database
+CREATE DATABASE IF NOT EXISTS library_management_system;
+USE library_management_system;
+
+-- ------------------------
+-- 1. Books Table
+-- ------------------------
+CREATE TABLE IF NOT EXISTS books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150),
+    author VARCHAR(100),
+    year INT
+);
+
+-- Insert 150 Indian books
+INSERT INTO books (title, author, year) VALUES
+('Gitanjali', 'Rabindranath Tagore', 1910),
+('Godan', 'Munshi Premchand', 1936),
+('Train to Pakistan', 'Khushwant Singh', 1956),
+('Midnight\'s Children', 'Salman Rushdie', 1981),
+('The White Tiger', 'Aravind Adiga', 2008),
+('The Guide', 'R.K. Narayan', 1958),
+('Malgudi Days', 'R.K. Narayan', 1943),
+('Clear Light of Day', 'Anita Desai', 1980),
+('In Custody', 'Anita Desai', 1984),
+('The Shadow Lines', 'Amitav Ghosh', 1988),
+('Sea of Poppies', 'Amitav Ghosh', 2008),
+('The Hungry Tide', 'Amitav Ghosh', 2004),
+('A Suitable Boy', 'Vikram Seth', 1993),
+('Tamas', 'Bhisham Sahni', 1974),
+('Ice-Candy-Man', 'Bapsi Sidhwa', 1988),
+('The Palace of Illusions', 'Chitra Banerjee Divakaruni', 2008),
+('Before We Visit the Gods', 'Chitra Banerjee Divakaruni', 1996),
+('Nectar in a Sieve', 'Kamala Markandaya', 1954),
+('Some Inner Fury', 'Kamala Markandaya', 1955),
+('Two Lives', 'Vikram Seth', 2005),
+('The Lowland', 'Jhumpa Lahiri', 2013),
+('Interpreter of Maladies', 'Jhumpa Lahiri', 1999),
+('Unaccustomed Earth', 'Jhumpa Lahiri', 2008),
+('An Obedient Father', 'Akhil Sharma', 2000),
+('Family Life', 'Akhil Sharma', 2014),
+('Serious Men', 'Manjula Padmanabhan', 2010),
+('Ladies Coupe', 'Anita Nair', 2001),
+('The Better Man', 'Anita Nair', 2000),
+('Kite Strings', 'Rohinton Mistry', 1988),
+('Such a Long Journey', 'Rohinton Mistry', 1991),
+('A Fine Balance', 'Rohinton Mistry', 1995),
+('Family Matters', 'Rohinton Mistry', 2002),
+('The Painter of Signs', 'R.K. Narayan', 1976),
+('The Man-Eater of Malgudi', 'R.K. Narayan', 1961),
+('Swami and Friends', 'R.K. Narayan', 1935),
+('The Dark Holds No Terrors', 'Shashi Deshpande', 1980),
+('That Long Silence', 'Shashi Deshpande', 1988),
+('Roots and Shadows', 'Shashi Deshpande', 1983),
+('The Binding Vine', 'Shashi Deshpande', 1992),
+('A Golden Age', 'Amitav Ghosh', 2007),
+('Flood of Fire', 'Amitav Ghosh', 2015),
+('River of Smoke', 'Amitav Ghosh', 2011),
+('The Glass Palace', 'Amitav Ghosh', 2000),
+('The Inheritance of Loss', 'Kiran Desai', 2006),
+('Hullabaloo in the Guava Orchard', 'Kiran Desai', 1998),
+('The Village by the Sea', 'Anita Desai', 1982),
+('Fire on the Mountain', 'Anita Desai', 1977),
+('Where the Rainbow Ends', 'Anita Desai', 1992),
+('The Cloud Messenger', 'Kalidasa', -400),
+('Shakuntala', 'Kalidasa', -400),
+('Mahabharata', 'Vyasa', -400),
+('Ramayana', 'Valmiki', -500),
+('Bhagavad Gita', 'Vyasa', -500),
+('Chokher Bali', 'Rabindranath Tagore', 1903),
+('Ghare Baire', 'Rabindranath Tagore', 1916),
+('Shesher Kobita', 'Rabindranath Tagore', 1929),
+('Pather Panchali', 'Bibhutibhushan Bandyopadhyay', 1929),
+('Aparajito', 'Bibhutibhushan Bandyopadhyay', 1932),
+('Devi', 'Bimal Kar', 1947),
+('Parineeta', 'Sarat Chandra Chattopadhyay', 1914),
+('Devdas', 'Sarat Chandra Chattopadhyay', 1917),
+('The Home and the World', 'Rabindranath Tagore', 1916),
+('Chitra', 'Rabindranath Tagore', 1892),
+('Gora', 'Rabindranath Tagore', 1910),
+('A River Sutra', 'Gita Mehta', 1993),
+('Karma Cola', 'Gita Mehta', 1979),
+('Caste and Race in India', 'B.R. Ambedkar', 1936),
+('Annihilation of Caste', 'B.R. Ambedkar', 1936),
+('India After Gandhi', 'Ramachandra Guha', 2007),
+('Gandhi: An Autobiography', 'M.K. Gandhi', 1927),
+('My Experiments with Truth', 'M.K. Gandhi', 1927),
+('The Argumentative Indian', 'Amartya Sen', 2005),
+('Identity and Violence', 'Amartya Sen', 2006),
+('Development as Freedom', 'Amartya Sen', 1999),
+('Open Secrets', 'Amitav Ghosh', 1999),
+('The Secret of the Nagas', 'Amish Tripathi', 2011),
+('The Immortals of Meluha', 'Amish Tripathi', 2010),
+('The Oath of the Vayuputras', 'Amish Tripathi', 2013),
+('Scion of Ikshvaku', 'Amish Tripathi', 2015),
+('Legend of Suheldev', 'Amish Tripathi', 2020),
+('The White Tiger Returns', 'Aravind Adiga', 2015),
+('The Ministry of Utmost Happiness', 'Arundhati Roy', 2017),
+('The God of Small Things', 'Arundhati Roy', 1997),
+('An Atlas of Impossible Longing', 'Anuradha Roy', 2008),
+('Sleeping on Jupiter', 'Anuradha Roy', 2015),
+('The Folded Earth', 'Anuradha Roy', 2011),
+('The Twentieth Wife', 'Indu Sundaresan', 2002),
+('The Feast of Roses', 'Indu Sundaresan', 2003),
+('Shadow Princess', 'Indu Sundaresan', 2006),
+('In the Court of the Crimson King', 'Rohit Chopra', 2018),
+('The Immortal Queen', 'Chitra Banerjee Divakaruni', 2017),
+('The Conch Bearer', 'Chitra Banerjee Divakaruni', 2003),
+('Queen of Dreams', 'Chitra Banerjee Divakaruni', 2004),
+('Before We Visit the Gods', 'Chitra Banerjee Divakaruni', 1997),
+('River of Fire', 'Qurratulain Hyder', 1959),
+('Aag Ka Darya', 'Qurratulain Hyder', 1959),
+('Sunlight on a Broken Column', 'Attia Hosain', 1961),
+('Through the Looking Glass', 'Vikram Seth', 1982),
+('Beastly Tales', 'Vikram Seth', 1992),
+('Elephant and the Trap', 'Vikram Seth', 2006),
+('The Golden Legend', 'Indira Goswami', 1989),
+('The Blue Necked God', 'Indira Goswami', 1990),
+('The Book of Shadows', 'Indira Goswami', 1991),
+('The Perfect Murder', 'H.R.F. Keating', 1964),
+('The Murder of the Maharaja', 'H.R.F. Keating', 1968),
+('The Tiger Claw', 'H.R.F. Keating', 1975),
+('Murder on the Eastern Express', 'H.R.F. Keating', 1980),
+('The Case of the Missing Servant', 'R.K. Laxman', 1985),
+('The Battle of Malgudi', 'R.K. Narayan', 1986),
+('Under the Banyan Tree', 'R.K. Narayan', 1987),
+('The Vendor of Sweets', 'R.K. Narayan', 1967),
+('Waiting for the Mahatma', 'R.K. Narayan', 1955),
+('The Dark Room', 'R.K. Narayan', 1938),
+('Panchatantra Stories', 'Vishnu Sharma', -300),
+('Hitopadesha', 'Narayan Pandit', 800),
+('Jungle Book', 'Rudyard Kipling', 1894),
+('Kim', 'Rudyard Kipling', 1901),
+('Godaan Revisited', 'Munshi Premchand', 1940),
+('Sevasadan', 'Munshi Premchand', 1918),
+('Bazaar-e-Husn', 'Munshi Premchand', 1919),
+('Gunahon Ka Devta', 'Dharamvir Bharati', 1949),
+('Andha Yug', 'Dharamvir Bharati', 1953),
+('Maila Anchal', 'Phanishwar Nath Renu', 1954),
+('Rasapriya', 'Phanishwar Nath Renu', 1955),
+('A Man of the People', 'R.K. Laxman', 1960),
+('A Life of One', 'Kiran Nagarkar', 1971),
+('Cuckold', 'Kiran Nagarkar', 1997),
+('Ravan and Other Stories', 'Shashi Deshpande', 1999),
+('The Long Silence', 'Shashi Deshpande', 1988),
+('The Binding Vine', 'Shashi Deshpande', 1992),
+('That Long Silence', 'Shashi Deshpande', 1988);
+
+-- ------------------------
+-- 2. Members Table
+-- ------------------------
+CREATE TABLE IF NOT EXISTS members (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
+
+-- Insert 50 Indian members
+INSERT INTO members (name) VALUES
+('Aarav Sharma'),('Ananya Mehta'),('Rohan Gupta'),('Priya Singh'),('Aditya Verma'),
+('Sanya Kapoor'),('Vivaan Iyer'),('Ishita Rao'),('Karan Malhotra'),('Neha Jain'),
+('Siddharth Nair'),('Aisha Choudhary'),('Dhruv Bhatia'),('Tanvi Deshmukh'),('Arjun Khanna'),
+('Meera Joshi'),('Raghav Pillai'),('Sneha Reddy'),('Amitabh Kulkarni'),('Shreya Menon'),
+('Ritika Sharma'),('Varun Mehta'),('Pooja Singh'),('Ankit Verma'),('Mira Kapoor'),
+('Harsh Iyer'),('Tanisha Rao'),('Kunal Malhotra'),('Sonal Jain'),('Pranav Nair'),
+('Aanya Desai'),('Raghav Sharma'),('Isha Kapoor'),('Dhruv Sharma'),('Sanya Iyer'),
+('Arnav Gupta'),('Mehul Jain'),('Rhea Menon'),('Anaya Nair'),('Kabir Reddy'),
+('Tara Khanna'),('Ishaan Malhotra'),('Priya Mehta'),('Amit Sharma'),('Kavya Rao'),
+('Rohit Verma'),('Tanvi Joshi'),('Aditya Kapoor'),('Mira Sharma'),('Vivaan Mehta');
+
+-- ------------------------
+-- 3. Issued Books Table
+-- ------------------------
+CREATE TABLE IF NOT EXISTS issued_books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    book_id INT,
+    member_id INT,
+    issue_date DATE DEFAULT CURRENT_DATE,
+    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
+    FOREIGN KEY (member_id) REFERENCES members(id) ON DELETE CASCADE
+);
+
+-- Insert 60 sample issued books
+INSERT INTO issued_books (book_id, member_id) VALUES
+(1,1),(2,2),(3,3),(4,4),(5,5),
+(6,6),(7,7),(8,8),(9,9),(10,10),
+(11,11),(12,12),(13,13),(14,14),(15,15),
+(16,16),(17,17),(18,18),(19,19),(20,20),
+(21,21),(22,22),(23,23),(24,24),(25,25),
+(26,26),(27,27),(28,28),(29,29),(30,30),
+(31,1),(32,2),(33,3),(34,4),(35,5),
+(36,6),(37,7),(38,8),(39,9),(40,10),
+(41,11),(42,12),(43,13),(44,14),(45,15),
+(46,16),(47,17),(48,18),(49,19),(50,20),
+(51,21),(52,22),(53,23),(54,24),(55,25),
+(56,26),(57,27),(58,28),(59,29),(60,30);
